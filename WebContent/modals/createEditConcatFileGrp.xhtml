@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">                  
+    <h:form id="modalForm" class="editEntityModal">
+        <p:dialog class="small-11 columns " header="Concatenate File Group Entry" widgetVar="createEditConcatFileGrpModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <h5 class="greenFont"><strong>Concatenate File Group Details</strong></h5>
+                </div>
+                <!-- GROUP ID -->
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="groupDesc" value="Group Description:" />
+                    <p:inputText id="groupDesc" label="Group Description" value="#{concateFileAdminBean.selectedConcatenateFileGroup.description}">
+                        <f:ajax event="blur" render="groupIDMsg" />
+                    </p:inputText>
+                    <p:message id="groupIDMsg" for="groupDesc" style="color: red;" />
+                </div>
+                <!-- FILE CONCATE LIST -->
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="concateList" value="Concate List:" />
+                    <p:inputText id="concateList" label="Concate List" value="#{concateFileAdminBean.selectedConcatenateFileGroup.fileConcatList}">
+                        <f:ajax event="blur" render="concateListMsg" />
+                    </p:inputText>
+                    <p:message id="concateListMsg" for="concateList" style="color: red;" />
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="small-12 columns">
+                    <p:messages globalOnly="true"/>
+                </div>
+            </div>
+            <div class="row .dataTableHeader">
+                <div class="small-12 columns tableHeaderFacet ">
+                    <div class="button-group tableHeaderFacet float-right">
+                        <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{concateFileAdminBean.saveEntryAction(actionEvent)}">
+                        </p:commandButton>
+                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                        </p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:dialog>
+        <p:growl autoUpdate="true"></p:growl>
+    </h:form>
+</html>

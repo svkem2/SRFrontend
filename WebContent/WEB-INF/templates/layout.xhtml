@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Web Administration</title>
+
+        <!-- METADATA -->
+        <link rel="shortcut icon" type="image/png" href="/SRFrontend/faces/javax.faces.resource/img/favicon.png"/>
+        <meta charset="UTF-8"></meta>
+        <meta name="description" content="Settlement and reconciliation administration"></meta>
+        <meta name="keywords" content=""></meta>
+        <meta name="author" content="Stuart Kemp"></meta>
+
+        <!--  CUSTOM CSS AND FOUNDATION CSS -->
+        <h:outputStylesheet library="css" name="foundation.css" />
+        <h:outputStylesheet library="css" name="foundation-icons.css" />
+        <h:outputStylesheet library="css" name="customStyles.css" />
+
+
+
+        <!-- JAVASCRIPT DEPENDENCIES -->
+        <!-- <h:outputScript library="js" name="jquery.js" /> -->
+        <h:outputScript library="js" name="foundation.js" />
+
+        <!-- CUSTOM JAVASCRIPT -->
+        <h:outputScript library="js" name="custom.js" />
+        <ui:insert name="headInclude"></ui:insert>
+
+    </h:head>
+
+    <h:body>
+        <!-- WRAPPER -->
+        <div id="wrapper">
+
+            <!-- HEADER AND NAV -->
+            <div id="header" class="row">
+                <ui:insert name="header">
+                    <ui:include src="/WEB-INF/templates/header.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+
+            <!-- CONTENT -->
+            <div id="content" class="row">
+                <div class="title-bar titleBar">
+                    <ui:insert name="titlebar">
+                        <ui:include src="/WEB-INF/templates/titlebar.xhtml"></ui:include>
+                    </ui:insert>
+                </div>
+                <div class="mainContent small-12 columns">
+                    <ui:insert name="content">
+                        <ui:include src="/WEB-INF/templates/content.xhtml"></ui:include>
+                    </ui:insert>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div id="footer" class="row">
+                <ui:insert name="footer">
+                    <ui:include src="/WEB-INF/templates/footer.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+
+        </div>
+    </h:body>
+</html>

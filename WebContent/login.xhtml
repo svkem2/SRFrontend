@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Web Administration Login</title>
+
+        <!-- METADATA -->
+        <link rel="shortcut icon" type="image/png" href="http://localhost:8080/SRFrontend/resources/img/favicon.png"/>
+        <meta charset="UTF-8"></meta>
+        <meta name="description" content="Settlement and reconciliation administration"></meta>
+        <meta name="keywords" content=""></meta>
+        <meta name="author" content="Stuart Kemp"></meta>
+
+        <!--  CUSTOM CSS AND FOUNDATION CSS -->
+        <h:outputStylesheet library="css" name="foundation.css" />
+        <h:outputStylesheet library="css" name="foundation-icons.css" />
+        <h:outputStylesheet library="css" name="customStyles.css" />
+
+
+
+        <!-- JAVASCRIPT DEPENDENCIES -->
+        <!-- <h:outputScript library="js" name="jquery.js" /> -->
+        <h:outputScript library="js" name="foundation.js" />
+
+        <!-- CUSTOM JAVASCRIPT -->
+        <h:outputScript library="js" name="custom.js" />
+
+    </h:head>
+    <h:body>
+        <ui:define name="titlebar">
+            <h5 class="text-center pageTitle"><strong>ADMINISTRATION LOGIN</strong></h5>
+        </ui:define>
+        <ui:define name="content">
+
+        </ui:define>
+    </h:body>
+
+    <h:body>
+        <!-- WRAPPER -->
+        <div id="wrapper">
+
+            <!-- HEADER AND NAV -->
+            <div id="header" class="row">
+                <div class="top-bar" role="navigation">
+                    <div style="background-image: url('http://localhost:8080/SRFrontend/resources/img/logo2.png')" class="top-bar-left logo">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div id="content" class="row">
+                <div class="title-bar titleBar">
+                    <h5 class="text-center pageTitle"><strong>ADMINISTRATION LOGIN</strong></h5>
+                </div>
+                <div class="mainContent small-12 columns">
+                        <div class="row">
+                            <div class="small-6 large-centered columns">
+                                <form method="post" action="j_security_check">
+                                    <h:panelGroup>
+                                        <p><label>Username:</label> <input id="username" type="text" name="j_username"/></p>
+                                        <p><label>Password:</label> <input id="password" type="password" name="j_password"/></p>
+                                        <input type="submit" class="button" value="Login" id="login" />
+                                    </h:panelGroup>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div id="footer" class="row">
+            </div>
+
+        </div>
+    </h:body>
+
+</html>
+

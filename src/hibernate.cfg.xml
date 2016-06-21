@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/srdatabase</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">73851552</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="use_sql_comments">true</property>
+        <property name="hbm2ddl.auto">update</property>
+		<!-- MAPPING -->
+		<mapping class="com.stellr.sr.domain.InputFile"/>
+		<mapping class="com.stellr.sr.domain.ConcatenateFileGroup"/>
+		<mapping class="com.stellr.sr.domain.FieldFunction"/>
+		<mapping class="com.stellr.sr.domain.FileCompareGroup"/>
+		<mapping class="com.stellr.sr.domain.FilePath"/>
+		<mapping class="com.stellr.sr.domain.InputFileSchema"/>
+		<mapping class="com.stellr.sr.domain.ReportSection"/>
+		<mapping class="com.stellr.sr.domain.ReportSectionContent"/>
+		<mapping class="com.stellr.sr.domain.ReportStructure"/>
+	</session-factory>
+</hibernate-configuration>

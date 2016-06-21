@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">                  
+    <h:form id="modalForm" class="editEntityModal">
+        <p:dialog class="small-11 columns " header="File Compare Group Details" widgetVar="createEditFileCompareGroupModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <h5 class="greenFont"><strong>File Compare Group Details</strong></h5>
+                </div>
+                <!-- GROUP Name -->
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="groupName" value="Group Name:" />
+                    <p:inputText id="groupName" label="Group Name:" value="#{fileCompareAdminBean.selectedFileCompareGroup.groupName}">
+                        <f:ajax event="blur" render="groupNameMsg" />
+                    </p:inputText>
+                    <p:message id="groupNameMsg" for="groupName" style="color: red;" />
+                </div>
+                <!-- FILE 1 -->
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="file1" value="File 1:"  />
+                    <!-- filecompareList[1] temporary, as comma in front and behind currently in database, ie index 0 is a comma -->
+                    <p:selectOneMenu id="file1" value="#{fileCompareAdminBean.selectedFileCompareGroup.fileCompareList[1]}" label="Input File"
+                                     effect="fade" var="thisFile1">
+                        <f:selectItems value="#{fileCompareAdminBean.allInputFiles}" var="inputFiles" itemLabel="#{inputFiles.inputFileId} | #{inputFiles.nameFormat}" itemValue="#{inputFiles.inputFileId}" />
+                        <f:selectItem itemValue="#{null}" itemLabel="Please select one" noSelectionOption="true" />
+                        <p:column>
+                            <h:outputText value="#{thisFile1}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{fileCompareAdminBean.inputFileIdtoNameFormatMap.get(thisFile1)}" />
+                        </p:column>
+                        <f:ajax event="blur" render="file1Msg" />
+                    </p:selectOneMenu>
+                    <p:message id="file1Msg" for="file1" style="color: red;" />
+                </div>
+                <!-- FILE 1 -->
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="file2" value="File 2:"  />
+                    <p:selectOneMenu id="file2" value="#{fileCompareAdminBean.selectedFileCompareGroup.fileCompareList[2]}" label="Input File"
+                                     effect="fade" var="thisFile2">
+                        <f:selectItems value="#{fileCompareAdminBean.allInputFiles}" var="inputFiles" itemLabel="#{inputFiles.inputFileId} | #{inputFiles.nameFormat}" itemValue="#{inputFiles.inputFileId}" />
+                        <f:selectItem itemValue="#{null}" itemLabel="Please select one" noSelectionOption="true" />
+                        <p:column>
+                            <h:outputText value="#{thisFile2}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{fileCompareAdminBean.inputFileIdtoNameFormatMap.get(thisFile2)}" />
+                        </p:column>
+                        <f:ajax event="blur" render="file2msg" />
+                    </p:selectOneMenu>
+                    <p:message id="file2Msg" for="file2" style="color: red;" />
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="small-12 columns">
+                    <p:messages globalOnly="true"/>
+                </div>
+            </div>
+            <div class="row .dataTableHeader">
+                <div class="small-12 columns tableHeaderFacet ">
+                    <div class="button-group tableHeaderFacet float-right">
+                        <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{fileCompareAdminBean.saveEntryAction(actionEvent)}">
+                        </p:commandButton>
+                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                        </p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:dialog>
+        <p:growl autoUpdate="true"></p:growl>
+    </h:form>
+</html>

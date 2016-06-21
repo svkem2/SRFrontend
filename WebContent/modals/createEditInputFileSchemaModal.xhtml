@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">                  
+    <h:form id="modalForm" class="editEntityModal">
+        <p:dialog class="small-11 columns " header="Input File Entry" widgetVar="createEditInputFileSchemaModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h5 class="greenFont"><strong>Header Details</strong></h5>
+                    </div>
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="gotHeader" value="Got Header:" />
+                        <p:inputText id="gotHeader" label="Got Header:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.gotHeader}">
+                            <f:ajax event="blur" render="gotHeaderMsg" />
+                        </p:inputText>
+                        <p:message id="gotHeaderMsg" for="gotHeader" style="color: red;" />
+                    </div>
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="headerStart" value="Header Start:" />
+                        <p:inputText id="headerStart" label="Header Start:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.headerStart}">
+                            <f:ajax event="blur" render="headerStartMsg" />
+                        </p:inputText>
+                        <p:message id="headerStartMsg" for="headerStart" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="headerFluff" value="Header Fluff:" />
+                        <p:inputText id="headerFluff" label="Header Fluff:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.headerFluff}">
+                            <f:ajax event="blur" render="headerFluffMsg" />
+                        </p:inputText>
+                        <p:message id="headerFluffMsg" for="headerFluff" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="headerDelimiter" value="Header Delimiter:" />
+                        <p:inputText id="headerDelimiter" label="Header Delimiter:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.headerDelimiter}">
+                            <f:ajax event="blur" render="headerDelimMsg" />
+                        </p:inputText>
+                        <p:message id="headerDelimMsg" for="headerDelimiter" style="color: red;" />
+                    </div>
+                    <div class="small-2 medium-2 columns end">
+                        <h:outputLabel for="headerColumns" value="Header Coloumns:" />
+                        <p:inputText id="headerColumns" label="Header Coloumns:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.numberHeaderColumns}">
+                            <f:ajax event="blur" render="headerColMsg" />
+                        </p:inputText>
+                        <p:message id="headerColMsg" for="headerColumns" style="color: red;" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h5 class="greenFont"><strong>Footer Details</strong></h5>
+                    </div>
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="gotFooter" value="Got Footer:" />
+                        <p:inputText id="gotFooter" label="Got Footer:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.gotFooter}">
+                            <f:ajax event="blur" render="gotFooterMsg" />
+                        </p:inputText>
+                        <p:message id="gotFooterMsg" for="gotFooter" style="color: red;" />
+                    </div>
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="footerStart" value="Footer Start:" />
+                        <p:inputText id="footerStart" label="Footer Start:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.footerStart}">
+                            <f:ajax event="blur" render="footerStartMsg" />
+                        </p:inputText>
+                        <p:message id="footerStartMsg" for="footerStart" style="color: red;" />
+                    </div>                   
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="footerDelim" value="Footer Delimiter:" />
+                        <p:inputText id="footerDelim" label="Footer Delimiter:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.footerDelimiter}">
+                            <f:ajax event="blur" render="footerDelimMsg" />
+                        </p:inputText>
+                        <p:message id="footerDelimMsg" for="footerDelim" style="color: red;" />
+                    </div>  
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="footerFluff" value="Footer Fluff:" />
+                        <p:inputText id="footerFluff" label="Footer Fluff:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.footerFluff}">
+                            <f:ajax event="blur" render="footerFluffMsg" />
+                        </p:inputText>
+                        <p:message id="footerFluffMsg" for="footerFluff" style="color: red;" />
+                    </div>
+
+                    <div class="small-2 medium-2 columns end">
+                        <h:outputLabel for="footerColoumns" value="Footer Coloumns:" />
+                        <p:inputText id="footerColoumns" label="Footer Coloumns:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.numberFooterColumns}">
+                            <f:ajax event="blur" render="footerColMsg" />
+                        </p:inputText>
+                        <p:message id="footerColMsg" for="footerColoumns" style="color: red;" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h5 class="greenFont"><strong>Other Field Details</strong></h5>
+                    </div>
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="detailColoumns" value="Detail Coloumns:" />
+                        <p:inputText id="detailColoumns" label="Detail Coloumns:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.numberDetailColumns}">
+                            <f:ajax event="blur" render="detailColoumnsMsg" />
+                        </p:inputText>
+                        <p:message id="detailColoumnsMsg" for="detailColoumns" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="detailDelimiter" value="Detail Delimiter:" />
+                        <p:inputText id="detailDelimiter" label="Detail Delimiter:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.detailDelimiter}">
+                            <f:ajax event="blur" render="detailDelimiterMsg" />
+                        </p:inputText>
+                        <p:message id="detailDelimiterMsg" for="detailDelimiter" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="fieldFluff" value="Field Fluff:" />
+                        <p:inputText id="fieldFluff" label="Field Fluff:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.fieldFluff}">
+                            <f:ajax event="blur" render="fieldFluffMsg" />
+                        </p:inputText>
+                        <p:message id="fieldFluffMsg" for="fieldFluff" style="color: red;" />
+                    </div>
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="fieldExtract" value="Field Extract:" />
+                        <p:inputText id="fieldExtract" label="Field Extract:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.fieldExtract}">
+                            <f:ajax event="blur" render="fieldExtractMsg" />
+                        </p:inputText>
+                        <p:message id="fieldExtractMsg" for="fieldExtract" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-4 columns">
+                        <h:outputLabel for="fieldMatch" value="Field Match:" />
+                        <p:inputText id="fieldMatch" label="Field Match:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.fieldMatch}">
+                            <f:ajax event="blur" render="fieldMatchMsg" />
+                        </p:inputText>
+                        <p:message id="fieldMatchMsg" for="fieldMatch" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-4 columns">
+                        <h:outputLabel for="fieldTransform" value="Field Transform:" />
+                        <p:inputText id="fieldTransform" label="Field Transform:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.fieldTransform}">
+                            <f:ajax event="blur" render="fieldTransformMsg" />
+                        </p:inputText>
+                        <p:message id="fieldTransformMsg" for="fieldTransform" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="gotSkipRows" value="Got Skip Rows:" />
+                        <p:inputText id="gotSkipRows" label="Got Skip Rows:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.gotSkipRows}">
+                            <f:ajax event="blur" render="gotSkipRowsMsg" />
+                        </p:inputText>
+                        <p:message id="gotSkipRowsMsg" for="gotSkipRows" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="numSkipRows" value="Num Skip Rows:" />
+                        <p:inputText id="numSkipRows" label="Num Skip Rows:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.numberSkipRowColumns}">
+                            <f:ajax event="blur" render="numSkipRowsMsg" />
+                        </p:inputText>
+                        <p:message id="numSkipRowsMsg" for="numSkipRows" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns">
+                        <h:outputLabel for="skipRowDelimiter" value="Skip Row Delimiter:" />
+                        <p:inputText id="skipRowDelimiter" label="Skip Row Delimiter:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.skipRowDelimiter}">
+                            <f:ajax event="blur" render="skipRowDelimiterMsg" />
+                        </p:inputText>
+                        <p:message id="skipRowDelimiterMsg" for="skipRowDelimiter" style="color: red;" />
+                    </div>                
+                    <div class="small-2 medium-2 columns end">
+                        <h:outputLabel for="skipRowStart" value="Skip Row Start:" />
+                        <p:inputText id="skipRowStart" label="Skip Row Start:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.skipStartingWith}">
+                            <f:ajax event="blur" render="skipRowStartMsg" />
+                        </p:inputText>
+                        <p:message id="skipRowStartMsg" for="skipRowStart" style="color: red;" />
+                    </div>
+                </div>            
+                <br/>
+                <div class="row .dataTableHeader">
+                    <div class="small-2 columns tableHeaderFacet ">
+                        <div class="button-group tableHeaderFacet float-right">
+                            <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{inputFileSchemaAdminBean.saveEntryAction(actionEvent)}">
+                            </p:commandButton>
+                            <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                            </p:commandButton>
+                        </div>
+                    </div>
+                </div>
+        </p:dialog>
+        <p:growl autoUpdate="true"></p:growl>
+    </h:form>
+</html>

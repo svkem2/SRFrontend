@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <ui:composition>
+            <!-- NAVIGATION -->
+            <div class="top-bar" role="navigation">
+                <div class="top-bar-left logo">
+                </div>
+                <div id="responsive-menu">
+                    <div class="top-bar-right">
+                        <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
+                            <li><a href="#">Menu</a>
+                                <ul class="menu vertical">
+                                    <li><a href="/SRFrontend/faces/admin/inputFileAdmin.xhtml">Input Files</a></li>
+                                    <li><a href="/SRFrontend/faces/admin/inputFileSchemaAdmin.xhtml">Input File Schemas</a></li>
+                                    <li><a href="/SRFrontend/faces/admin/filePathAdmin.xhtml">File Paths</a></li>
+                                    <li><a href="/SRFrontend/faces/admin/concatenateFileGrpAdmin.xhtml">Concat. File Groups</a></li>
+                                    <li><a href="/SRFrontend/faces/admin/fileCompareGroupAdmin.xhtml">File Compare Groups</a></li>
+                                    <li><a href="#">Field Functions</a></li>
+                                    <li><a href="#">Report Sections</a></li>
+                                    <li><a href="#">Report Section Content</a></li>
+                                    <li><a href="#">Report Structures</a></li>
+                                    <li>
+                                        <h:form>
+                                            <h:commandButton class="button logout" action="#{authController.logout}" value="Logout" />
+                                        </h:form>
+                                    </li>
+                                </ul></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </ui:composition>
+    </body>
+</html>

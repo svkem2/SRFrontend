@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /* Entity Class Field Functions
  * 
@@ -32,6 +33,10 @@ public class FieldFunction implements java.io.Serializable {
 
     @Column(name = "functionrettype")
     private String functionRetType;
+    
+    @Column(name = "active")
+    @NotNull (message = "Must be set to true or false")
+    private boolean active;
 
     public FieldFunction() {
     }
@@ -91,6 +96,14 @@ public class FieldFunction implements java.io.Serializable {
 
     public void setFunctionRetType(String functionRetType) {
         this.functionRetType = functionRetType;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 }

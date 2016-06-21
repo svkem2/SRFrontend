@@ -11,8 +11,12 @@ import com.stellr.sr.domain.FieldFunction;
  * @since 2016-04-08
  */
 public interface FieldFunctionAccess {
-	public abstract void insert(FieldFunction newFieldFunction);
-	public abstract void update(FieldFunction fieldFunction);
-	public abstract FieldFunction findById(int fieldFunctionId);
-	public abstract List<FieldFunction> getAll();
+
+    public abstract void insert(FieldFunction newFieldFunction);
+
+    public abstract void update(FieldFunction fieldFunction);
+
+    public abstract FieldFunction findById(int fieldFunctionId);
+
+    public abstract List<FieldFunction> getAll();
 }

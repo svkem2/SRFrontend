@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">                  
+    <h:form id="modalForm" class="editEntityModal">
+        <p:dialog class="small-11 columns " header="Field Function Details" widgetVar="createEditFieldFunctionModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <h5 class="greenFont"><strong>Field Function Details</strong></h5>
+                </div>
+                <div class="small-2 medium-6 columns">
+                    <h:outputLabel for="functionName" value="Function Name:" />
+                    <p:inputText id="functionName" label="Function Name:" value="#{fieldFunctionAdminBean.selectedFieldFunction.functionName}">
+                        <f:ajax event="blur" render="functionNameMsg" />
+                    </p:inputText>
+                    <p:message id="functionNameMsg" for="functionName" style="color: red;" />
+                </div>
+                <div class="small-2 medium-6 columns">
+                    <h:outputLabel for="argType" value="Arg Type:" />
+                    <p:inputText id="argType" label="Arg Type:" value="#{fieldFunctionAdminBean.selectedFieldFunction.functionArgType}">
+                        <f:ajax event="blur" render="argTypeMsg" />
+                    </p:inputText>
+                    <p:message id="argTypeMsg" for="argType" style="color: red;" />
+                </div>
+                <div class="small-2 medium-6 columns end">
+                    <h:outputLabel for="retType" value="Return Type:" />
+                    <p:inputText id="retType" label="Return Type:" value="#{fieldFunctionAdminBean.selectedFieldFunction.functionRetType}">
+                        <f:ajax event="blur" render="retTypeMsg" />
+                    </p:inputText>
+                    <p:message id="retTypeMsg" for="retType" style="color: red;" />
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="small-12 columns">
+                    <p:messages globalOnly="true"/>
+                </div>
+            </div>
+            <div class="row .dataTableHeader">
+                <div class="small-12 columns tableHeaderFacet ">
+                    <div class="button-group tableHeaderFacet float-right">
+                        <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{fieldFunctionAdminBean.saveEntryAction(actionEvent)}">
+                        </p:commandButton>
+                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                        </p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:dialog>
+        <p:growl autoUpdate="true"></p:growl>
+    </h:form>
+</html>

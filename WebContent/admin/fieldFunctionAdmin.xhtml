@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/WEB-INF/templates/layout.xhtml">
+            <ui:define name="titlebar">
+                <h5 class="text-center pageTitle"><strong>FIELD FUNCTION ADMINISTRATION</strong></h5>
+            </ui:define>
+            <ui:define name="content">
+                <h:form id="dataForm">
+
+                    <!-- DATA TABLE -->
+                    <p:dataTable tableStyle="width:auto" var="function" value="#{fieldFunctionAdminBean.allFieldFunction}"
+
+                                 widgetVar="dataTableView"
+
+                                 paginator="true"
+                                 paginatorPosition="bottom"
+                                 pageLinks="6"
+                                 rows="10"
+                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+
+                                 filteredValue="#{fieldFunctionAdminBean.filterList}" 
+                                 filterEvent="keyup"
+                                 >
+
+                        <!-- TABLE HEADER AND OPTIONS -->
+                        <f:facet name="header">
+                            <div class="row dataTableHeader" selectionMode="single">
+                                <div class="small-12 medium-3 columns tableHeaderFacet">
+                                    <p:inputText placeholder="Filter Results" size="10" class="tableHeaderFacet" id="globalFilter" onkeyup="PF('dataTableView').filter()"/>
+                                </div>
+                                <div class="small-12 medium-8 columns tableHeaderFacet">
+                                    <div class="button-group tableHeaderFacet float-right">
+                                        <p:commandButton value="New Field Function" class="button tableHeaderFacet" action="#{fieldFunctionAdminBean.newEntryAction()}"
+                                                         update=":modalForm" 
+                                                         oncomplete="PF('createEditFieldFunctionModal').show();"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:facet>
+
+                        <!-- TABLE DATA COLUMNS -->
+                        <p:column headerText="Id" filterBy="#{function.fieldFunctionId}" filterStyle="display:none" filterMatchMode="contains" width="50">
+                            <h:outputText value="#{function.fieldFunctionId}" />
+                        </p:column>
+
+                        <p:column headerText="Function Name" filterBy="#{function.functionName}" filterStyle="display:none" filterMatchMode="contains">
+                            <h:outputText value="#{function.functionName}" />
+                        </p:column>
+                        
+                        <p:column headerText="Arg. Type" filterBy="#{function.functionArgType}" filterStyle="display:none" filterMatchMode="contains">
+                            <h:outputText value="#{function.functionArgType}" />
+                        </p:column>
+                        
+                        <p:column headerText="Return Type" filterBy="#{function.functionRetType}" filterStyle="display:none" filterMatchMode="contains">
+                            <h:outputText value="#{function.functionRetType}" />
+                        </p:column>
+
+                        <!-- EDIT ENTRY COLUMN -->
+                        <p:column headerText="Edit" filterable="false"  style="center" width="50">
+                            <p:commandButton value="Edit"
+                                             immediate="true"
+                                             update=":modalForm" 
+                                             oncomplete="PF('createEditFieldFunctionModal').show();">
+                                <f:setPropertyActionListener value="#{function}"
+                                                             target="#{fieldFunctionAdminBean.selectedFieldFunction}" />
+                            </p:commandButton>
+                        </p:column>
+
+                        <!-- DEACTIVATE ENTRY COLUMN -->
+                        <p:column headerText="Active" filterable="false" style="center" width="50">
+                            <p:selectBooleanCheckbox value="#{function.active}"   id="checkboxId">
+                                <p:ajax update=":dataForm" listener="#{fieldFunctionAdminBean.deactivateEntry(function.active, function)}"/>  
+                            </p:selectBooleanCheckbox> 
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+                
+                <!-- CREATE OR EDIT FILE PATH MODAL -->
+                <ui:include src="/modals/createEditFieldFunctionModal.xhtml"/>
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

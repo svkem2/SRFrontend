@@ -1,24 +1,64 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>S&R Login Failed</title>
+        <link rel="shortcut icon" type="image/png" href="resources/img/favicon.png"/>
+
+        <!--  CUSTOM CSS AND FOUNDATION CSS -->
+        <h:outputStylesheet library="css" name="foundation.css" />
+        <h:outputStylesheet library="css" name="foundation-icons.css" />
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="customStyles.css"/>
+
+        <!-- JAVASCRIPT DEPENDENCIES -->
+        <h:outputScript library="js" name="foundation.js" />
+
+        <!-- CUSTOM JAVASCRIPT -->
+        <h:outputScript library="js" name="custom.js" />
+
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Gemini - Login Error</title>
     </h:head>
     <h:body>
-        <ui:composition template="/WEB-INF/templates/layout.xhtml">
-            <ui:define name="titlebar">
-                <h5 class="text-center pageTitle"><strong>ADMINISTRATION LOGIN</strong></h5>
-            </ui:define>
-            <ui:define name="content">
-                <h:form id="loginform">
-                    <h1>Login Failed!</h1>
-                </h:form>
-            </ui:define>
-        </ui:composition>
+
+        <!-- WRAPPER -->
+        <div id="wrapper">
+
+            <!-- HEADER-->
+            <div id="header" class="row">
+                <div class="top-bar" role="navigation">
+                    <div class="top-bar-left logo" style='cursor:pointer; background-image:url("http://localhost:8080/SRFrontend/resources/img/logo2.png");' onclick="location.href = '/SRFrontend/faces/dashboard.xhtml';">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div id="content" class="row">
+                <div class="title-bar titleBar">
+                    <h5 class="text-center pageTitle"><strong>LOGIN ERROR!</strong></h5>
+                </div>
+                <div class="mainContent row">
+                    <div class="small-12 errorBox">
+                        <br/>
+                        <p>You have entered incorrect user credentials.</p>
+                        <p>Please try again or contact administration.</p>
+                        <h:form>
+                            <h:commandButton class="button" action="#{authController.logout}" value="Login Page" />
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div id="footer" class="row">
+                <div id="footer"></div>
+            </div>
+
+        </div>
     </h:body>
 </html>
 

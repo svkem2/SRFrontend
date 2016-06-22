@@ -139,6 +139,13 @@ table {
     margin:0;
 }
 
+.errorBox {
+    position:relative;
+    width:80%;
+    margin:5% auto;
+    text-align: center;
+}
+
 /* CONTENT STYLING */
 
 /* COLOURS */

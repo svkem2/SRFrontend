@@ -46,12 +46,25 @@
     <!-- Error pages -->
     <error-page>
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-        <location>/faces/filePathAdmin.xhtml</location>
+        <location>/errorpages/expired.xhtml</location>
     </error-page>
     
-    <!-- AUTHENTICATION -->    
-  
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorpages/error403.xhtml</location>
+    </error-page>
     
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorpages/error500.xhtml</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorpages/error404.xhtml</location>
+    </error-page>
+    <!-- AUTHENTICATION -->    
+     
     <security-constraint>
         <display-name>Admin</display-name>
         <web-resource-collection>
@@ -90,18 +103,6 @@
             <url-pattern>/Gemini/javax.faces.resource/*</url-pattern>
         </web-resource-collection>
         <!-- No Auth Contraint! -->
-    </security-constraint>
-   
-    <filter>
-        <filter-name>noCacheFilter</filter-name>
-        <filter-class>com.stellr.sr.filter.CacheControlFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>noCacheFilter</filter-name>
-        <url-pattern>/faces/*</url-pattern>
-    </filter-mapping>
-
-
-        
+    </security-constraint>       
 
 </web-app>

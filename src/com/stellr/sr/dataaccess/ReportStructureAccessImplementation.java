@@ -1,6 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.stellr.sr.dataaccess;
 
-import com.stellr.sr.domain.ReportSectionContent;
+import com.stellr.sr.domain.ReportStructure;
 import com.stellr.sr.hibernate.HibernateUtil;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -11,53 +16,53 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-/* Report Section Content CRUD Operations
+/* Report Structure CRUD Operations
  * 
  * @author Stuart Kemp
  * @version 1.0
  * @since 2016-04-28
  */
 @Stateless
-public class ReportSectionContentAccessImplementation implements ReportSectionContentAccess {
+public class ReportStructureAccessImplementation implements ReportStructureAccess {
     
     private static SessionFactory sessionFactory;
 
-    public ReportSectionContentAccessImplementation() {
+    public ReportStructureAccessImplementation() {
         sessionFactory = HibernateUtil.getSessionFactory();
     }
 
     @Override
-    public void insert(ReportSectionContent newReportSectionContent) {
+    public void insert(ReportStructure newReportStructure) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(ReportSectionContent reportSectionContent) {
+    public void update(ReportStructure ReportStructure) {
         Session session = sessionFactory.openSession();
 		Transaction txn = null;
 		try{
 			txn = session.beginTransaction();
-                        session.saveOrUpdate(reportSectionContent);
+                        session.saveOrUpdate(ReportStructure);
 			txn.commit();
 		}catch(HibernateException e){
 			//handle exception
 			if (txn!=null) txn.rollback();
                         FacesContext context = FacesContext.getCurrentInstance();
-                        context.addMessage(null,  new FacesMessage("Error saving report section content, please contact Administrator: error message -> " + e));
+                        context.addMessage(null,  new FacesMessage("Error saving report structure, please contact Administrator: error message -> " + e));
 		}finally{
 			session.close();
 		}
     }
 
     @Override
-    public ReportSectionContent findById(int reportSectionContentId) {
-        ReportSectionContent retReportSection = null;
+    public ReportStructure findById(int ReportStructureId) {
+        ReportStructure retReportStructure = null;
         Session session = sessionFactory.openSession();
         Transaction txn = null;
         try {
             //get data
             txn = session.beginTransaction();
-            retReportSection = (ReportSectionContent) session.get(ReportSectionContent.class, reportSectionContentId);
+            retReportStructure = (ReportStructure) session.get(ReportStructure.class, ReportStructureId);
             txn.commit();
         } catch (HibernateException e) {
             //handle exception
@@ -67,18 +72,18 @@ public class ReportSectionContentAccessImplementation implements ReportSectionCo
         } finally {
             session.close();
         }
-        return retReportSection;
+        return retReportStructure;
     }
 
     @Override
-    public List<ReportSectionContent> getAll() {
-        List<ReportSectionContent> retList = null;
+    public List<ReportStructure> getAll() {
+        List<ReportStructure> retList = null;
         Session session = sessionFactory.openSession();
         Transaction txn = null;
         try {
             //get data
             txn = session.beginTransaction();
-            retList = session.createCriteria(ReportSectionContent.class).list();
+            retList = session.createCriteria(ReportStructure.class).list();
             txn.commit();
         } catch (HibernateException e) {
             //handle exception

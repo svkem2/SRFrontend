@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 /* Entity Class Report Structure
  * 
@@ -25,12 +28,22 @@ public class ReportStructure implements java.io.Serializable {
     private int reportStructureId;
 
     @Column(name = "reportfilename")
+    @NotNull(message = "Please report filename")
+    @Length(min=1, max=64, message="Please enter a string pattern between 1 and 64 characters") 
     private String reportFilename;
 
     @Column(name = "reportgroups")
+    @NotNull(message = "Please enter report group list")
+    @Length(min=1, max=64, message="Please enter a string pattern between 1 and 64 characters") 
     private String reportGroups;
+    
+    @Column(name = "srmailgroupid")
+    @NotNull(message = "Please enter a report structure id")
+    @Digits(integer = 20, fraction = 0, message = "Incorrect report section content id, must be an integer")
+    private int srMailGroupId;
 
     @Column(name = "active")
+    @NotNull (message = "Must be set to true or false")
     private boolean active;
 
     public ReportStructure() {
@@ -91,6 +104,14 @@ public class ReportStructure implements java.io.Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public int getSrMailGroupId() {
+        return srMailGroupId;
+    }
+
+    public void setSrMailGroupId(int srMailGroupId) {
+        this.srMailGroupId = srMailGroupId;
     }
 
 }

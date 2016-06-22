@@ -5,8 +5,11 @@
  */
 package com.stellr.sr.servicesbeans;
 
+import com.stellr.sr.dataaccess.ReportStructureAccess;
 import com.stellr.sr.domain.ReportStructure;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /* Report structure services implementation
@@ -16,7 +19,10 @@ import javax.ejb.Stateless;
  * @since 2016-04-21
  */
 @Stateless
+@RolesAllowed("StellrAdminGroup")
 public class ReportStructureServiceImplementation implements ReportStructureServiceLocal {
+    @EJB
+    ReportStructureAccess dao;
 
     @Override
     public void createReportStructure(ReportStructure newReportStructure) {
@@ -25,17 +31,17 @@ public class ReportStructureServiceImplementation implements ReportStructureServ
 
     @Override
     public void updateReportStructure(ReportStructure reportStructure) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.update(reportStructure);
     }
 
     @Override
     public ReportStructure fetchReportStructurebyId(int reportStructureId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.findById(reportStructureId);
     }
 
     @Override
     public List<ReportStructure> getAllReportStructure() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAll();
     }
     
 }

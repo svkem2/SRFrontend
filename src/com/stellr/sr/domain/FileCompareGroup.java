@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 /* Entity Class File Compare Groups
  * 
@@ -29,12 +31,17 @@ public class FileCompareGroup implements java.io.Serializable {
 
     @Column(name = "filecomparelist")
     @Convert(converter = StringListConverter.class)
+    @NotNull(message = "Please enter a file compare list")
+    @Length(min=1, max=16, message="Please enter a string pattern between 1 and 16 characters") 
     private List<String> fileCompareList;
 
     @Column(name = "groupname")
+    @NotNull(message = "Please enter a group name")
+    @Length(min=1, max=24, message="Please enter a string pattern between 1 and 24 characters") 
     private String groupName;
 
     @Column(name = "active")
+    @NotNull (message = "Must be set to true or false")
     private boolean active;
 
     public FileCompareGroup() {

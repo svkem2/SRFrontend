@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 /* Entity Class Field Functions
  * 
@@ -26,12 +27,18 @@ public class FieldFunction implements java.io.Serializable {
     private int fieldFunctionId;
 
     @Column(name = "functionname")
+    @NotNull(message = "Please enter a function name")
+    @Length(min=1, max=64, message="Please enter a string pattern between 1 and 64 characters") 
     private String functionName;
 
     @Column(name = "functionargtype")
+    @NotNull(message = "Please enter a function argument type")
+    @Length(min=1, max=16, message="Please enter a string pattern between 1 and 16 characters") 
     private String functionArgType;
 
     @Column(name = "functionrettype")
+    @NotNull(message = "Please enter a function return type")
+    @Length(min=1, max=16, message="Please enter a string pattern between 1 and 16 characters") 
     private String functionRetType;
     
     @Column(name = "active")

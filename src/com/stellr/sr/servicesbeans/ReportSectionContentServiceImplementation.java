@@ -5,8 +5,11 @@
  */
 package com.stellr.sr.servicesbeans;
 
+import com.stellr.sr.dataaccess.ReportSectionContentAccess;
 import com.stellr.sr.domain.ReportSectionContent;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /* Report Section Content Services Implementation
@@ -16,8 +19,12 @@ import javax.ejb.Stateless;
  * @since 2016-04-21
  */
 @Stateless
+@RolesAllowed("StellrAdminGroup")
 public class ReportSectionContentServiceImplementation implements ReportSectionContentServiceLocal {
 
+    @EJB
+    ReportSectionContentAccess dao;
+    
     @Override
     public void createReportSectionContent(ReportSectionContent newReportSectionContent) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -25,17 +32,17 @@ public class ReportSectionContentServiceImplementation implements ReportSectionC
 
     @Override
     public void updateReportSectionContent(ReportSectionContent reportSectionContent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.update(reportSectionContent);
     }
 
     @Override
     public ReportSectionContent fetchReportSectionContentbyId(int reportSectionContentId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.findById(reportSectionContentId);
     }
 
     @Override
     public List<ReportSectionContent> getAllReportSectionContent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAll();
     }
     
 }

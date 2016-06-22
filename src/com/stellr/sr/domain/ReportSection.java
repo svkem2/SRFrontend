@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 /* Entity Class Report Section
  * 
@@ -25,15 +28,22 @@ public class ReportSection implements java.io.Serializable {
     private int reportSectionId;
 
     @Column(name = "reportstructureid")
+    @NotNull(message = "Please enter a section structure id")
+    @Digits(integer = 20, fraction = 0, message = "Incorrect section structure id, must be an integer")
     private int sectionStructureId;
 
     @Column(name = "sectionposition")
+    @NotNull(message = "Please enter a section position")
+    @Digits(integer = 6, fraction = 0, message = "Incorrect section position, must be an integer")
     private int sectionPosition;
 
     @Column(name = "sectionheading")
+    @NotNull(message = "Please enter a section heading")
+    @Length(min=1, max=64, message="Please enter a string pattern between 1 and 64 characters") 
     private String sectionHeading;
 
     @Column(name = "active")
+    @NotNull (message = "Must be set to true or false")
     private boolean active;
 
     public ReportSection() {

@@ -2,7 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Web Administration</title>
 
@@ -21,7 +22,6 @@
 
 
         <!-- JAVASCRIPT DEPENDENCIES -->
-        <h:outputScript library="js" name="jquery.js" />
         <h:outputScript library="js" name="foundation.js" />
 
         <!-- CUSTOM JAVASCRIPT -->
@@ -48,7 +48,7 @@
                         <ui:include src="/WEB-INF/templates/titlebar.xhtml"></ui:include>
                     </ui:insert>
                 </div>
-                <div class="mainContent small-12 column">
+                <div class="mainContent small-12 columns">
                     <ui:insert name="content">
                         <ui:include src="/WEB-INF/templates/content.xhtml"></ui:include>
                     </ui:insert>

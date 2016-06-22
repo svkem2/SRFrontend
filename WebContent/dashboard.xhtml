@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/WEB-INF/templates/layout.xhtml">
+            <ui:define name="titlebar">
+                <h5 class="text-center pageTitle"><strong>S&amp;R Dashboard</strong></h5>
+            </ui:define>
+            <ui:define name="content">
+                <div class="boxWrapper row">
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/inputFileAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/inputFile.png" /></div>
+                            <div class="small-12">
+                                <p>Input Files</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/filePathAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/filePath.png" /></div>
+                            <div class="small-12">
+                                <p>File Paths</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/inputFileSchemaAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/inputFileSchema.png" /></div>
+                            <div class="small-12">
+                                <p>Input File Schemas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/concatenateFileGrpAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/concatFileGroups.png" /></div>
+                            <div class="small-12">
+                                <p>Concat. File Groups</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/fileCompareGroupAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/fileCompareGroups.png" /></div>
+                            <div class="small-12">
+                                <p>File Compare Groups</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/fieldFunctionAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/fieldFunction.png" /></div>
+                            <div class="small-12">
+                                <p>Field Functions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/reportSectionAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/reportSection.png" /></div>
+                            <div class="small-12">
+                                <p>Report Sections</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/reportSectionContentAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/reportSectionContent.png" /></div>
+                            <div class="small-12">
+                                <p>Report Section Content</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4 column" onclick="location.href = '${request.contextPath}/faces/admin/reportStructureAdmin.xhtml';">
+                        <div class="dashBox">
+                            <div class="small-12"><img src="${request.contextPath}/resources/img/reportStructure.png" /></div>
+                            <div class="small-12">
+                                <p>Report Structure</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

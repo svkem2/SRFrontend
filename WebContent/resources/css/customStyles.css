@@ -104,6 +104,41 @@ table {
     margin:7.5% !important;
 }
 
+.dashBox {
+    padding:3%;
+    margin-bottom: 3%;
+    font-weight: bold;
+    text-align: center;
+    color:#043140;
+    cursor: pointer;
+    background: #eee;
+
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    word-wrap: normal;
+    word-break: break-all;
+
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.dashBox:hover {
+    background:#A9CF41;    
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
+    color:#fff;
+}
+
+.dashBox p {
+    font-size:0.8em;
+    margin:0;
+}
+
 /* CONTENT STYLING */
 
 /* COLOURS */

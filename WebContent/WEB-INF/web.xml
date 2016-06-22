@@ -15,7 +15,7 @@
 
     <!-- Welcome page -->
     <welcome-file-list>
-        <welcome-file>faces/admin/filePathAdmin.xhtml</welcome-file>
+        <welcome-file>faces/dashboard.xhtml</welcome-file>
     </welcome-file-list>
 
     <!-- JSF mapping -->

@@ -79,7 +79,6 @@ public class InputFileAdminPageBean implements Serializable {
         allFilePaths = fetchAllFilePaths();
         allInputFileSchemas = fetchAllInputFileSchemas();
         allConcatenateFileGroups = fetchAllConcatenateFileGroups();
-        selectedInputFile = null;
         selectedFilePath = null;
         selectedFileSchema = null;
         selectedConcatFileGroup = null;
@@ -105,21 +104,21 @@ public class InputFileAdminPageBean implements Serializable {
 
     /* FETCH DEPENDENCIES BY ID CALLS */
     public void setDependencies() {
-        this.selectedFilePath = fetchFilePathById();
-        this.selectedFileSchema = fetchInputFileSchemaById();
-        this.selectedConcatFileGroup = fetchConcatenateFileGroupById();
+        this.selectedFilePath = fetchFilePathById(this.selectedFilePath.getFilePathId());
+        this.selectedFileSchema = fetchInputFileSchemaById(this.selectedFileSchema.getInputFileSchemaId());
+        this.selectedConcatFileGroup = fetchConcatenateFileGroupById(this.selectedConcatFileGroup.getConcatenateFileGroupId());
     }
 
-    public FilePath fetchFilePathById() {
-        return filePathService.fetchFilePathbyId(this.selectedInputFile.getInputFilePathId());
+    public FilePath fetchFilePathById(int id) {
+        return filePathService.fetchFilePathbyId(id);
     }
 
-    public InputFileSchema fetchInputFileSchemaById() {
-        return inputFileSchemaService.fetchInputFileSchemabyId(this.selectedInputFile.getFileSchemaId());
+    public InputFileSchema fetchInputFileSchemaById(int id) {
+        return inputFileSchemaService.fetchInputFileSchemabyId(id);
     }
 
-    public ConcatenateFileGroup fetchConcatenateFileGroupById() {
-        return concatenateFileGroupService.fetchConcatenateFileGroupbyId(this.selectedInputFile.getConcatenateFileGrpId());
+    public ConcatenateFileGroup fetchConcatenateFileGroupById(int id) {
+        return concatenateFileGroupService.fetchConcatenateFileGroupbyId(id);
     }
 
     /* ACTION LISTNERS */
@@ -129,9 +128,10 @@ public class InputFileAdminPageBean implements Serializable {
 
     public void newEntryAction() {
         this.selectedInputFile = new InputFile();
-        this.selectedFilePath = fetchFilePathById();
-        this.selectedFileSchema = fetchInputFileSchemaById();
-        this.selectedConcatFileGroup = fetchConcatenateFileGroupById();
+        this.selectedFilePath = null;
+        this.selectedFileSchema = null;
+        this.selectedConcatFileGroup = null;
+        refreshData();
     }
     
     public void deactivateEntry(Boolean isActive, InputFile file) {

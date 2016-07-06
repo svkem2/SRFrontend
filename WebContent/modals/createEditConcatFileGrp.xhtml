@@ -15,7 +15,6 @@
                 <div class="small-12 medium-6 columns">
                     <h:outputLabel for="groupDesc" value="Group Description:" />
                     <p:inputText id="groupDesc" label="Group Description" value="#{concateFileAdminBean.selectedConcatenateFileGroup.description}">
-                        <f:ajax event="blur" render="groupIDMsg" />
                     </p:inputText>
                     <p:message id="groupIDMsg" for="groupDesc" style="color: red;" />
                 </div>
@@ -23,7 +22,6 @@
                 <div class="small-12 medium-6 columns">
                     <h:outputLabel for="concateList" value="Concate List:" />
                     <p:inputText id="concateList" label="Concate List" value="#{concateFileAdminBean.selectedConcatenateFileGroup.fileConcatList}">
-                        <f:ajax event="blur" render="concateListMsg" />
                     </p:inputText>
                     <p:message id="concateListMsg" for="concateList" style="color: red;" />
                 </div>

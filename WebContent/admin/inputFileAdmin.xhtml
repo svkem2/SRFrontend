@@ -41,7 +41,7 @@
                                 <div class="small-12 medium-8 columns tableHeaderFacet">
                                     <div class="button-group tableHeaderFacet float-right">
                                         <p:commandButton value="New Input File" class="button tableHeaderFacet" action="#{inputFileAdminBean.newEntryAction()}"
-                                                         update=":modalForm" 
+                                                         update=":inputFilemodalForm" 
                                                          oncomplete="PF('createEditInputFileModal').show();"/>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                             <p:commandButton value="Edit"
                                              immediate="true"
                                              action="#{inputFileAdminBean.setDependencies()}"
-                                             update=":modalForm" 
+                                             update=":inputFilemodalForm" 
                                              oncomplete="PF('createEditInputFileModal').show();">
                                 <f:setPropertyActionListener value="#{file}"
                                                              target="#{inputFileAdminBean.selectedInputFile}" />
@@ -81,6 +81,7 @@
                 
                 <!-- CREATE OR EDIT INPUT FILE MODAL -->
                 <ui:include src="/modals/newEditInputFile.xhtml"/>
+                <ui:include src="/modals/newEditFilePath.xhtml"/>
                 
             </ui:define>
         </ui:composition>

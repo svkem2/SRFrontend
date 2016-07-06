@@ -14,21 +14,18 @@
                 <div class="small-2 medium-6 columns">
                     <h:outputLabel for="filename" value="Filename:" />
                     <p:inputText id="filename" label="Filename:" value="#{reportSectionContentAdminBean.selectedReportSectionContent.filename}">
-                        <f:ajax event="blur" render="filenameMsg" />
                     </p:inputText>
                     <p:message id="filenameMsg" for="filename" style="color: red;" />
                 </div>                         
                 <div class="small-2 medium-6 columns">
                     <h:outputLabel for="reportSectionId" value="Report Section ID:" />
                     <p:inputText id="reportSectionId" label="Report Section ID:" value="#{reportSectionContentAdminBean.selectedReportSectionContent.reportSectionId}">
-                        <f:ajax event="blur" render="reportSectionIdMsg" />
                     </p:inputText>
                     <p:message id="reportSectionIdMsg" for="reportSectionId" style="color: red;" />
                 </div>                    
                 <div class="small-2 medium-6 columns end">
                     <h:outputLabel for="groupList" value="Group List:" />
                     <p:inputText id="groupList" label="Group List:" value="#{reportSectionContentAdminBean.selectedReportSectionContent.groupList}">
-                        <f:ajax event="blur" render="groupListMsg" />
                     </p:inputText>
                     <p:message id="groupListMsg" for="groupList" style="color: red;" />
                 </div>
@@ -36,7 +33,6 @@
                 <div class="small-2 medium-6 columns end">
                     <h:outputLabel for="identifier" value="Identifier:" />
                     <p:inputText id="identifier" label="Identifier:" value="#{reportSectionContentAdminBean.selectedReportSectionContent.identifier}">
-                        <f:ajax event="blur" render="identifierMsg" />
                     </p:inputText>
                     <p:message id="identifierMsg" for="identifier" style="color: red;" />
                 </div>

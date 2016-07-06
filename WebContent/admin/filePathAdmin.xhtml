@@ -41,7 +41,7 @@
                                 <div class="small-12 medium-8 columns tableHeaderFacet">
                                     <div class="button-group tableHeaderFacet float-right">
                                         <p:commandButton value="New File Path" class="button tableHeaderFacet" action="#{filePathAdminBean.newEntryAction()}"
-                                                         update=":modalForm" 
+                                                         update=":filePathModalForm" 
                                                          oncomplete="PF('createEditFilePathModal').show();"/>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                         <p:column headerText="Edit" filterable="false"  style="center" width="50">
                             <p:commandButton value="Edit"
                                              immediate="true"
-                                             update=":modalForm" 
+                                             update=":filePathModalForm" 
                                              oncomplete="PF('createEditFilePathModal').show();">
                                 <f:setPropertyActionListener value="#{file}"
                                                              target="#{filePathAdminBean.selectedFilePath}" />

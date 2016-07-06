@@ -14,21 +14,18 @@
                 <div class="small-2 medium-6 columns">
                     <h:outputLabel for="sectionHeading" value="Section Heading:" />
                     <p:inputText id="sectionHeading" label="Section Heading:" value="#{reportSectionAdminBean.selectedReportSection.sectionHeading}">
-                        <f:ajax event="blur" render="sectionHeadingMsg" />
                     </p:inputText>
                     <p:message id="sectionHeadingMsg" for="sectionHeading" style="color: red;" />
                 </div>                
                 <div class="small-2 medium-6 columns">
                     <h:outputLabel for="structureId" value="Report Structure ID:" />
                     <p:inputText id="structureId" label="Report Structure ID:" value="#{reportSectionAdminBean.selectedReportSection.sectionStructureId}">
-                        <f:ajax event="blur" render="reportStructureMsg" />
                     </p:inputText>
                     <p:message id="reportStructureMsg" for="structureId" style="color: red;" />
                 </div>                
                 <div class="small-2 medium-6 columns end">
                     <h:outputLabel for="sectionPosition" value="Section Position:" />
                     <p:inputText id="sectionPosition" label="Section Position:" value="#{reportSectionAdminBean.selectedReportSection.sectionPosition}">
-                        <f:ajax event="blur" render="sectionPositionMsg" />
                     </p:inputText>
                     <p:message id="sectionPositionMsg" for="sectionPosition" style="color: red;" />
                 </div>

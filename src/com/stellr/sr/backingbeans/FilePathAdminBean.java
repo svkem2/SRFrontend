@@ -45,6 +45,7 @@ public class FilePathAdminBean implements Serializable {
     @PostConstruct
     public void init() {
         refreshData();
+        selectedFilePath = new FilePath();
     }
     
     public void refreshData() {

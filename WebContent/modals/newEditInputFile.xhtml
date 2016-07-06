@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">                  
-    <h:form id="modalForm" class="editEntityModal">
+    <h:form id="inputFilemodalForm" class="editEntityModal">
         <p:dialog class="small-11 columns " header="Input File Entry" widgetVar="createEditInputFileModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 
             <div class="row">
@@ -14,50 +14,42 @@
                 <div class="small-12 medium-6 columns">
                     <h:outputLabel for="fileNameFormat" value="File Name Format:" />
                     <p:inputText id="fileNameFormat" label="File Name Format" value="#{inputFileAdminBean.selectedInputFile.nameFormat}">
-                        <f:ajax event="blur" render="fileNameFormatMsg" />
                     </p:inputText>
                     <p:message id="fileNameFormatMsg" for="fileNameFormat" style="color: red;" />
 
                     <h:outputLabel for="txnDateModifier" value="Txn Date Modifier:" />
                     <p:inputText id="txnDateModifier" label="Txn Date Modifier" value="#{inputFileAdminBean.selectedInputFile.txnDateModifier}">
-                        <f:ajax event="blur" render="txnDateModifierMsg" />
                     </p:inputText>
                     <p:message id="txnDateModifierMsg" for="txnDateModifier" style="color: red;" />
 
                     <h:outputLabel for="pendingCutOff" value="Pending Cut-off:" />
                     <p:inputText id="pendingCutOff" label="Pending Cut Off" value="#{inputFileAdminBean.selectedInputFile.pendingCutOff}">
-                        <f:ajax event="blur" render="pendingCutOffMsg" />
                     </p:inputText>
                     <p:message id="pendingCutOffMsg" for="pendingCutOff" style="color: red;" />
 
                     <h:outputLabel for="country" value="Country:" />
                     <p:inputText id="country" label="Country" value="#{inputFileAdminBean.selectedInputFile.country}">
-                        <f:ajax event="blur" render="countryMsg" />
                     </p:inputText>
                     <p:message id="countryMsg" for="country" style="color: red;" />
                 </div>
                 <div class="small-12 medium-6 columns">
                     <h:outputLabel for="searchPattern" value="Search Pattern:" />
                     <p:inputText id="searchPattern" label="Search Pattern" value="#{inputFileAdminBean.selectedInputFile.fileSearchPattern}">
-                        <f:ajax event="blur" render="searchPatternMsg" />
                     </p:inputText>
                     <p:message id="searchPatternMsg" for="searchPattern" style="color: red;" />
 
                     <h:outputLabel for="dateModifier" value="Date Modifier:" />
                     <p:inputText id="dateModifier" label="Date Modifier" value="#{inputFileAdminBean.selectedInputFile.dateModifier}">
-                        <f:ajax event="blur" render="dateModifierMsg" />
                     </p:inputText>
                     <p:message id="dateModifierMsg" for="dateModifier" style="color: red;" />
 
                     <h:outputLabel for="sourceName" value="Source Name:" />
                     <p:inputText id="sourceName" label="Source Name" value="#{inputFileAdminBean.selectedInputFile.dataSourceName}">
-                        <f:ajax event="blur" render="sourceNameMsg" />
                     </p:inputText>
                     <p:message id="sourceNameMsg" for="sourceName" style="color: red;" />
 
                     <h:outputLabel for="sourceType" value="Source Type:" />
                     <p:inputText id="sourceType" label="Source Type" value="#{inputFileAdminBean.selectedInputFile.dataSourceType}">
-                        <f:ajax event="blur" render="sourceTypeMsg" />
                     </p:inputText>
                     <p:message id="sourceTypeMsg" for="sourceType" style="color: red;" />
                 </div>
@@ -82,13 +74,13 @@
                         <p:column>
                             <h:outputText value="#{fp.filePath}" />
                         </p:column>
-                        <f:ajax event="blur" render="filePathMsg" />
                     </p:selectOneMenu> 
                    
                     <p:message id="filePathMsg" for="filePath" style="color: red;" />
-                     <p:commandButton value="New File Path" class="" action="#{inputFileAdminBean.newEntryAction()}"
-                                                         update=":modalForm" 
-                                                         oncomplete="PF('createEditInputFileModal').show();"/>
+                     <p:commandButton value="New File Path"
+                                      update=":inputFilemodalForm"
+                                      onclick="PF('createEditInputFileModal').hide();"
+                                      oncomplete="PF('createEditFilePathModal').show();"/>
 
                     <h:outputLabel for="concatFileGroup" value="Concat. File Groups:"  />
                     <p:selectOneMenu id="concatFileGroup" value="#{inputFileAdminBean.selectedConcatFileGroup}" label="Concatnate File Group"
@@ -102,7 +94,6 @@
                         <p:column>
                             <h:outputText value="#{cfg.description}" />
                         </p:column>
-                        <f:ajax event="blur" render="concatFileGroupMsg"/>
                     </p:selectOneMenu>
                     <p:message id="concatFileGroupMsg" for="concatFileGroup" style="color: red;" />
                 </div>
@@ -121,7 +112,6 @@
                         <p:column>
                             <h:outputText value="#{fs.description}" />
                         </p:column>
-                        <f:ajax event="blur" render="fileSchemaMsg" />
                     </p:selectOneMenu>
                     <p:message id="fileSchemaMsg" for="fileSchema" style="color: red;" />
                 </div>
@@ -136,7 +126,7 @@
                     <div class="button-group tableHeaderFacet float-right">
                         <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{inputFileAdminBean.saveEntryAction(actionEvent)}">
                         </p:commandButton>
-                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="inputFilemodalForm.hide()" immediate="true">
                         </p:commandButton>
                     </div>
                 </div>

@@ -130,7 +130,7 @@ public class InputFileAdminPageBean implements Serializable {
         this.selectedInputFile = new InputFile();
         this.selectedFilePath = null;
         this.selectedFileSchema = null;
-        this.selectedConcatFileGroup = null;
+        this.selectedConcatFileGroup = new ConcatenateFileGroup();
         refreshData();
     }
     

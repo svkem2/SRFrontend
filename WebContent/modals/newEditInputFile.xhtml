@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">                  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">                  
     <h:form id="inputFilemodalForm" class="editEntityModal">
         <p:dialog class="small-11 columns " header="Input File Entry" widgetVar="createEditInputFileModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 
@@ -75,13 +76,12 @@
                             <h:outputText value="#{fp.filePath}" />
                         </p:column>
                     </p:selectOneMenu> 
-                   
                     <p:message id="filePathMsg" for="filePath" style="color: red;" />
-                     <p:commandButton value="New File Path"
-                                      update=":inputFilemodalForm"
-                                      onclick="PF('createEditInputFileModal').hide();"
-                                      oncomplete="PF('createEditFilePathModal').show();"/>
-
+                    <p:commandButton value="New File Path"
+                                     update=":inputFilemodalForm"
+                                     onclick="PF('createEditInputFileModal').hide();"
+                                     oncomplete="PF('createEditFilePathModal').show();"/>
+                    
                     <h:outputLabel for="concatFileGroup" value="Concat. File Groups:"  />
                     <p:selectOneMenu id="concatFileGroup" value="#{inputFileAdminBean.selectedConcatFileGroup}" label="Concatnate File Group"
                                      effect="fade" var="cfg" converter="concatenateFileGroupConverter">
@@ -96,6 +96,10 @@
                         </p:column>
                     </p:selectOneMenu>
                     <p:message id="concatFileGroupMsg" for="concatFileGroup" style="color: red;" />
+                    <p:commandButton value="New Con. File Grp"
+                                     onclick="PF('createEditInputFileModal').hide();"
+                                     update=":concatFileGrpModalForm" 
+                                     oncomplete="PF('createEditConcatFileGrpModal').show();"/>
                 </div>
 
 
@@ -114,11 +118,10 @@
                         </p:column>
                     </p:selectOneMenu>
                     <p:message id="fileSchemaMsg" for="fileSchema" style="color: red;" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="small-12 columns">
-                    <p:messages globalOnly="true"/>
+                    <p:commandButton value="New File Schema"
+                                     onclick="PF('createEditInputFileModal').hide();"
+                                     update=":fileSchemaModalForm" 
+                                     oncomplete="PF('createEditInputFileSchemaModal').show();"/>
                 </div>
             </div>
             <div class="row .dataTableHeader">
@@ -132,6 +135,8 @@
                 </div>
             </div>
         </p:dialog>
-        <p:growl autoUpdate="true"></p:growl>
     </h:form>
+    <ui:include src="/modals/createEditInputFileSchemaModal.xhtml"/>
+    <ui:include src="/modals/createEditConcatFileGrp.xhtml"/>
+    <ui:include src="/modals/newEditFilePath.xhtml"/>
 </html>

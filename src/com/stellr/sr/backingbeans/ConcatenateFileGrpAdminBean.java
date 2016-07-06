@@ -48,6 +48,7 @@ public class ConcatenateFileGrpAdminBean implements Serializable {
     @PostConstruct
     public void init() {
         refreshData();
+        selectedConcatenateFileGroup = new ConcatenateFileGroup();
     }
 
     public void refreshData() {

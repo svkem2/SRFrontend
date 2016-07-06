@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="small-12 medium-8 columns tableHeaderFacet">
                                     <div class="button-group tableHeaderFacet float-right">
-                                        <p:commandButton value="New File Path" class="button tableHeaderFacet" action="#{concateFileAdminBean.newEntryAction()}"
-                                                         update=":modalForm" 
+                                        <p:commandButton value="New Concat. Group" class="button tableHeaderFacet" action="#{concateFileAdminBean.newEntryAction()}"
+                                                         update=":concatFileGrpModalForm" 
                                                          oncomplete="PF('createEditConcatFileGrpModal').show();"/>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                         <p:column headerText="Edit" filterable="false"  style="center" width="50">
                             <p:commandButton value="Edit"
                                              immediate="true"
-                                             update=":modalForm" 
+                                             update=":concatFileGrpModalForm" 
                                              oncomplete="PF('createEditConcatFileGrpModal').show();">
                                 <f:setPropertyActionListener value="#{group}"
                                                              target="#{concateFileAdminBean.selectedConcatenateFileGroup}" />
@@ -84,6 +84,7 @@
                 
                 <!-- CREATE OR EDIT FILE PATH MODAL -->
                 <ui:include src="/modals/createEditConcatFileGrp.xhtml"/>
+                <p:growl autoUpdate="true"></p:growl>
                 
             </ui:define>
         </ui:composition>

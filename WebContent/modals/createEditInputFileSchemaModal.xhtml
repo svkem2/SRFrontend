@@ -4,10 +4,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">                  
-    <h:form id="modalForm" class="editEntityModal">
-        <p:dialog class="small-11 columns " header="Input File Entry" widgetVar="createEditInputFileSchemaModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+    <h:form id="fileSchemaModalForm" class="editEntityModal">
+        <p:dialog class="small-11 columns " header="Input File Schema Entry" widgetVar="createEditInputFileSchemaModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
             
                 <div class="row">
+                    <div class="small-12 medium-12 columns">
+                        <h:outputLabel for="desc" value="Description:" />
+                        <p:inputText id="desc" label="Description:" value="#{inputFileSchemaAdminBean.selectedInputFileSchema.description}">
+                        </p:inputText>
+                        <p:message id="descMsg" for="desc" style="color: red;" />
+                    </div><br/>
                     <div class="small-12 columns">
                         <h5 class="greenFont"><strong>Header Details</strong></h5>
                     </div>
@@ -150,12 +156,12 @@
                         <div class="button-group tableHeaderFacet float-right">
                             <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{inputFileSchemaAdminBean.saveEntryAction(actionEvent)}">
                             </p:commandButton>
-                            <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                            <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="fileSchemaModalForm.hide()" immediate="true">
                             </p:commandButton>
                         </div>
                     </div>
                 </div>
         </p:dialog>
-        <p:growl autoUpdate="true"></p:growl>
     </h:form>
+    <p:growl life="500" autoUpdate="true"/>
 </html>

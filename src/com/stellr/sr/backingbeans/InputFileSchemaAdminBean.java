@@ -40,6 +40,7 @@ public class InputFileSchemaAdminBean implements Serializable {
     @PostConstruct
     public void init() {
         refreshData();
+        selectedInputFileSchema = new InputFileSchema();
     }
     
     public void refreshData() {
@@ -74,6 +75,7 @@ public class InputFileSchemaAdminBean implements Serializable {
     /* ACTION LISTENERS */
     public void newEntryAction() {
         this.selectedInputFileSchema = new InputFileSchema();
+        this.selectedInputFileSchema.setActive(true);
     }
     
     public void saveEntryAction(ActionEvent actionEvent) {

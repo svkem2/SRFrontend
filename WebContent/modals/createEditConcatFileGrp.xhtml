@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">                  
-    <h:form id="modalForm" class="editEntityModal">
+    <h:form id="concatFileGrpModalForm" class="editEntityModal">
         <p:dialog class="small-11 columns " header="Concatenate File Group Entry" widgetVar="createEditConcatFileGrpModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 
             <div class="row">
@@ -32,17 +32,16 @@
                     <p:messages globalOnly="true"/>
                 </div>
             </div>
-            <div class="row .dataTableHeader">
+            <div class="row dataTableHeader">
                 <div class="small-12 columns tableHeaderFacet ">
                     <div class="button-group tableHeaderFacet float-right">
                         <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{concateFileAdminBean.saveEntryAction(actionEvent)}">
                         </p:commandButton>
-                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="modalForm.hide()" immediate="true">
+                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="concatFileGrpModalForm.hide()" immediate="true">
                         </p:commandButton>
                     </div>
                 </div>
             </div>
         </p:dialog>
-        <p:growl autoUpdate="true"></p:growl>
     </h:form>
 </html>

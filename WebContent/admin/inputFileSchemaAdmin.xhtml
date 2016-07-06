@@ -41,7 +41,7 @@
                                 <div class="small-12 medium-8 columns tableHeaderFacet">
                                     <div class="button-group tableHeaderFacet float-right">
                                         <p:commandButton value="New Schema" class="button tableHeaderFacet" action="#{inputFileSchemaAdminBean.newEntryAction()}"
-                                                         update=":modalForm" 
+                                                         update=":fileSchemaModalForm" 
                                                          oncomplete="PF('createEditInputFileSchemaModal').show();"/>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                         <p:column headerText="Edit" filterable="false"  style="center" width="50">
                             <p:commandButton value="Edit"
                                              immediate="true"
-                                             update=":modalForm" 
+                                             update=":fileSchemaModalForm" 
                                              oncomplete="PF('createEditInputFileSchemaModal').show();">
                                 <f:setPropertyActionListener value="#{schema}"
                                                              target="#{inputFileSchemaAdminBean.selectedInputFileSchema}" />

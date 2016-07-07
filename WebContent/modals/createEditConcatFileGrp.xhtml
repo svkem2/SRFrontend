@@ -20,10 +20,18 @@
                 </div>
                 <!-- FILE CONCATE LIST -->
                 <div class="small-12 medium-6 columns">
-                    <h:outputLabel for="concateList" value="Concate List:" />
-                    <p:inputText id="concateList" label="Concate List" value="#{concateFileAdminBean.selectedConcatenateFileGroup.fileConcatList}">
-                    </p:inputText>
-                    <p:message id="concateListMsg" for="concateList" style="color: red;" />
+                    <p:outputLabel for="concateList" value="Choose Input Files:" />
+                    <p:selectManyMenu id="concateList" value="#{concateFileAdminBean.chosenInputFilesForGroup}" converter="inputFileConverter"
+                                      var="grp" showCheckbox="true" style="width:100%;">
+                        <f:selectItems value="#{inputFileAdminBean.allInputFiles}" var="files" itemLabel="#{files.inputFileId}" itemValue="#{files}" />
+                        <p:column>
+                            <h:outputText value="#{grp.inputFileId}" />
+                        </p:column>
+                         <p:column>
+                            <h:outputText value="#{grp.nameFormat}" />
+                        </p:column>
+                    </p:selectManyMenu>
+
                 </div>
             </div>
             <br/>

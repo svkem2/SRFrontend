@@ -1,6 +1,7 @@
 package com.stellr.sr.backingbeans;
 
 import com.stellr.sr.domain.ConcatenateFileGroup;
+import com.stellr.sr.domain.InputFile;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -40,6 +41,11 @@ public class ConcatenateFileGrpAdminBean implements Serializable {
 
     //selected input file and dependencies
     ConcatenateFileGroup selectedConcatenateFileGroup;
+    
+    //list to hold selected strings - primefaces manyMenu for create
+    //new concat group - input files picker
+    List<InputFile> chosenInputFilesForGroup;
+    
 
     public ConcatenateFileGrpAdminBean() {
     }
@@ -93,12 +99,18 @@ public class ConcatenateFileGrpAdminBean implements Serializable {
     //update dirty input file
     public String updateFileInput() {
         //validation performed on entity bean - sufficient?
-
+        
+        //build concate grp list
+        StringBuilder sb = new StringBuilder();
+        for(InputFile grp : chosenInputFilesForGroup){
+            sb.append(grp.getInputFileId() + ",");
+        }
+        String grpListString = sb.toString();
         ConcatenateFileGroup thisGroup = new ConcatenateFileGroup();
         
         thisGroup.setActive(true);
         thisGroup.setDescription(this.selectedConcatenateFileGroup.getDescription());
-        thisGroup.setFileConcatList(this.selectedConcatenateFileGroup.getFileConcatList());
+        thisGroup.setFileConcatList(grpListString.substring(0,grpListString.length()-1));
         thisGroup.setConcatenateFileGroupId(this.selectedConcatenateFileGroup.getConcatenateFileGroupId());
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -143,6 +155,14 @@ public class ConcatenateFileGrpAdminBean implements Serializable {
 
     public void setAllconcatenateFileGroups(List<ConcatenateFileGroup> allconcatenateFileGroups) {
         this.allconcatenateFileGroups = allconcatenateFileGroups;
+    }
+
+    public List<InputFile> getChosenInputFilesForGroup() {
+        return chosenInputFilesForGroup;
+    }
+
+    public void setChosenInputFilesForGroup(List<InputFile> chosenInputFilesForGroup) {
+        this.chosenInputFilesForGroup = chosenInputFilesForGroup;
     }
 
 

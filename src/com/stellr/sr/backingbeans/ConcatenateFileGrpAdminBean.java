@@ -7,7 +7,9 @@ import java.util.List;
 import javax.ejb.EJB;
 
 import com.stellr.sr.servicesbeans.ConcatenateFileGroupServiceLocal;
+import com.stellr.sr.servicesbeans.InputFileServiceLocal;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -32,6 +34,9 @@ public class ConcatenateFileGrpAdminBean implements Serializable {
     //Input File CRUD Services Bean
     @EJB
     ConcatenateFileGroupServiceLocal concatenateFileGroupService;
+    
+    @EJB
+    InputFileServiceLocal inputFileService;
 
     //hold all input files and dependency lists from database
     List<ConcatenateFileGroup> allconcatenateFileGroups;
@@ -93,6 +98,20 @@ public class ConcatenateFileGrpAdminBean implements Serializable {
         }
         
         
+    }
+    
+    public void prepareEdit(){
+        String[] groupsStringList = this.selectedConcatenateFileGroup.getFileConcatList().split(",");
+        List<InputFile> currentGrpList = new ArrayList<>();
+        for(String grpId : groupsStringList){
+            currentGrpList.add(inputFileService.fetchInputFilebyId(Integer.parseInt(grpId)));
+        }
+        this.chosenInputFilesForGroup = currentGrpList;
+    }
+    
+    public void create(){
+        updateFileInput();
+        this.chosenInputFilesForGroup = new ArrayList<>();
     }
 
     /* CRUD METHODS */

@@ -65,7 +65,8 @@
                         <p:column headerText="Edit" filterable="false"  style="center" width="50">
                             <p:commandButton value="Edit"
                                              immediate="true"
-                                             update=":concatFileGrpModalForm" 
+                                             update=":concatFileGrpModalForm"
+                                             action="#{concateFileAdminBean.prepareEdit}"
                                              oncomplete="PF('createEditConcatFileGrpModal').show();">
                                 <f:setPropertyActionListener value="#{group}"
                                                              target="#{concateFileAdminBean.selectedConcatenateFileGroup}" />

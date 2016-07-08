@@ -12,13 +12,13 @@
     <h:body>
         <ui:composition template="/WEB-INF/templates/layout.xhtml">
             <ui:define name="titlebar">
-                <h5 class="text-center pageTitle"><strong>REPORT STRUCTURE ADMINISTRATION</strong></h5>
+                <h5 class="text-center pageTitle"><strong>SR MAIL GROUP ADMINISTRATION</strong></h5>
             </ui:define>
             <ui:define name="content">
                 <h:form id="dataForm">
 
                     <!-- DATA TABLE -->
-                    <p:dataTable tableStyle="width:auto" var="file" value="#{reportStructureAdminBean.allReportStructure}"
+                    <p:dataTable tableStyle="width:auto" var="file" value="#{srMailGroupAdminBean.allSRMailGroups}"
 
                                  widgetVar="dataTableView"
 
@@ -28,7 +28,7 @@
                                  rows="10"
                                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 
-                                 filteredValue="#{reportStructureAdminBean.filterList}" 
+                                 filteredValue="#{srMailGroupAdminBean.filterList}" 
                                  filterEvent="keyup"
                                  >
 
@@ -40,57 +40,51 @@
                                 </div>
                                 <div class="small-12 medium-8 columns tableHeaderFacet">
                                     <div class="button-group tableHeaderFacet float-right">
-                                        <p:commandButton value="New Report Structure" class="button tableHeaderFacet" action="#{reportStructureAdminBean.newEntryAction()}"
-                                                         update=":modalForm" 
-                                                         oncomplete="PF('createEditReportStructureModal').show();"/>
+                                        <p:commandButton value="New Mail Group" class="button tableHeaderFacet" action="#{srMailGroupAdminBean.newEntryAction()}"
+                                                         update=":srMailGroupModalForm" 
+                                                         oncomplete="PF('createEditSRMailGroupModal').show();"/>
                                     </div>
                                 </div>
                             </div>
                         </f:facet>
 
                         <!-- TABLE DATA COLUMNS -->
-
-                        <p:column headerText="ID" filterBy="#{file.reportStructureId}" filterStyle="display:none" filterMatchMode="contains" width="50">
-                            <h:outputText value="#{file.reportStructureId}" />
-                        </p:column>
-
-                        <p:column headerText="Report Filename" filterBy="#{file.reportFilename}" filterStyle="display:none" filterMatchMode="contains">
-                            <h:outputText value="#{file.reportFilename}" />
-                        </p:column>
-
-                        <p:column headerText="Report Groups" filterBy="#{file.reportGroups}" filterStyle="display:none" filterMatchMode="contains">
-                            <h:outputText value="#{file.reportGroups}" />
-                        </p:column>
-
-                        <p:column headerText="SR Mail Group" filterBy="#{file.srMailGroupId}" filterStyle="display:none" filterMatchMode="contains">
+                        <p:column headerText="Id" filterBy="#{file.srMailGroupId}" filterStyle="display:none" filterMatchMode="contains" width="50">
                             <h:outputText value="#{file.srMailGroupId}" />
+                        </p:column>
+
+                        <p:column headerText="Send To" filterBy="#{file.srMailSendTo}" filterStyle="display:none" filterMatchMode="contains">
+                            <h:outputText value="#{file.srMailSendTo}" />
+                        </p:column>
+                        
+                        <p:column headerText="CC" filterBy="#{file.srMailCc}" filterStyle="display:none" filterMatchMode="contains">
+                            <h:outputText value="#{file.srMailCc}" />
                         </p:column>
 
                         <!-- EDIT ENTRY COLUMN -->
                         <p:column headerText="Edit" filterable="false"  style="center" width="50">
                             <p:commandButton value="Edit"
                                              immediate="true"
-                                             update=":modalForm" 
-                                             oncomplete="PF('createEditReportStructureModal').show();">
+                                             update=":srMailGroupModalForm" 
+                                             oncomplete="PF('createEditSRMailGroupModal').show();">
                                 <f:setPropertyActionListener value="#{file}"
-                                                             target="#{reportStructureAdminBean.selectedReportStructure}" />
+                                                             target="#{srMailGroupAdminBean.selectedSRMailGroup}" />
                             </p:commandButton>
                         </p:column>
 
                         <!-- DEACTIVATE ENTRY COLUMN -->
                         <p:column headerText="Active" filterable="false" style="center" width="50">
                             <p:selectBooleanCheckbox value="#{file.active}"   id="checkboxId">
-                                <p:ajax update=":dataForm" listener="#{reportStructureAdminBean.deactivateEntry(file.active, file)}"/>  
+                                <p:ajax update=":dataForm" listener="#{srMailGroupAdminBean.deactivateEntry(file.active, file)}"/>  
                             </p:selectBooleanCheckbox> 
                         </p:column>
 
                     </p:dataTable>
                 </h:form>
-
+                
                 <!-- CREATE OR EDIT FILE PATH MODAL -->
-                <ui:include src="/modals/createEditReportStructureModal.xhtml"/>
-                <p:growl autoUpdate="true"/>
-
+                <ui:include src="/modals/createEditSRMailGroupModal.xhtml"/>
+                <p:growl autoUpdate="true" life="500"/>
             </ui:define>
         </ui:composition>
     </h:body>

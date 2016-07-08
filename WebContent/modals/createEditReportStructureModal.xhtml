@@ -16,26 +16,43 @@
                     <p:inputText id="reportFilename" label="Filename:" value="#{reportStructureAdminBean.selectedReportStructure.reportFilename}">
                     </p:inputText>
                     <p:message id="filenameMsg" for="reportFilename" style="color: red;" />
-                </div>                
-                <div class="small-2 medium-6 columns">
-                    <h:outputLabel for="reportGroups" value="Report Groups:" />
-                    <p:inputText id="reportGroups" label="Report Groups:" value="#{reportStructureAdminBean.selectedReportStructure.reportGroups}">
-                    </p:inputText>
-                    <p:message id="reportGroupsMsg" for="reportGroups" style="color: red;" />
-                </div>                 
+                </div>               
+                           
                 <div class="small-2 medium-6 columns end">
                     <h:outputLabel for="srMailGroups" value="SR Mail Groups:" />
-                    <p:inputText id="srMailGroups" label="SR Mail Groups:" value="#{reportStructureAdminBean.selectedReportStructure.srMailGroupId}">
-                    </p:inputText>
+                    <p:selectOneMenu id="srMailGroups" value="#{reportStructureAdminBean.selectedSRMailGroup}" label="Report Groups:"
+                                     effect="fade" var="mg" style="width:100%;" converter="srMailGroupConverter">
+                        <f:selectItems value="#{srMailGroupAdminBean.allSRMailGroups}" var="srGroup" itemLabel="#{srGroup.srMailGroupId}" itemValue="#{srGroup}" />
+                        <f:selectItem itemValue="#{null}" itemLabel="Please select one" noSelectionOption="true" />
+                        <p:column>
+                            <h:outputText value="#{mg.srMailGroupId}" />
+                        </p:column>
+
+                        <p:column>
+                            <h:outputText value="#{mg.srMailSendTo}" />
+                        </p:column>
+                    </p:selectOneMenu>
                     <p:message id="srMailGroupMsg" for="srMailGroups" style="color: red;" />
                 </div>
+                
+                <div class="small-2 medium-6 columns">
+                    <h:outputLabel for="reportGroups" value="Report Groups:" />                   
+
+                    <p:selectManyMenu id="reportGroups" value="#{reportStructureAdminBean.selectedReportGroups}" converter="fileCompareGroupConverter"
+                                      var="grp" showCheckbox="true" style="width:100%;">
+                        <f:selectItems value="#{fileCompareAdminBean.allFileCompareGroup}" var="files" itemLabel="#{files.groupName}" itemValue="#{files}" />
+                        <p:column>
+                            <h:outputText value="#{grp.fileCompareId}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{grp.groupName}" />
+                        </p:column>
+                    </p:selectManyMenu>
+
+                    <p:message id="reportGroupsMsg" for="reportGroups" style="color: red;" />
+                </div>      
             </div>
             <br/>
-            <div class="row">
-                <div class="small-12 columns">
-                    <p:messages globalOnly="true"/>
-                </div>
-            </div>
             <div class="row dataTableHeader">
                 <div class="small-12 columns tableHeaderFacet ">
                     <div class="button-group tableHeaderFacet float-right">
@@ -47,6 +64,5 @@
                 </div>
             </div>
         </p:dialog>
-        <p:growl autoUpdate="true"></p:growl>
     </h:form>
 </html>

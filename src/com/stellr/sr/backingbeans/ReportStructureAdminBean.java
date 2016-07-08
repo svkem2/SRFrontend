@@ -5,7 +5,9 @@
  */
 package com.stellr.sr.backingbeans;
 
+import com.stellr.sr.domain.FileCompareGroup;
 import com.stellr.sr.domain.ReportStructure;
+import com.stellr.sr.domain.SRMailGroup;
 import com.stellr.sr.servicesbeans.ReportStructureServiceLocal;
 import java.io.Serializable;
 import java.util.List;
@@ -39,12 +41,16 @@ public class ReportStructureAdminBean implements Serializable {
     
     //hold filtered results for datatable
     List<ReportStructure> filterList;
+    
+    SRMailGroup selectedSRMailGroup;
+    List<FileCompareGroup> selectedReportGroups;
 
     //use post construct to contain single database calls
     //getter called by jsf too often
     @PostConstruct
     public void init() {
         refreshData();
+        selectedSRMailGroup = new SRMailGroup();
     }
     
     public void refreshData() {
@@ -90,13 +96,21 @@ public class ReportStructureAdminBean implements Serializable {
     //update dirty object
     public String updateReportStructure() {
         //validation performed on entity bean - sufficient?
+        //build reportgroup sting
+        StringBuilder reportGroupString = new StringBuilder();
+        for(FileCompareGroup fcg : this.selectedReportGroups){
+            reportGroupString.append(fcg.getFileCompareId()+",");
+        }
+        
+        String rString = reportGroupString.toString().substring(0, reportGroupString.toString().length()-1);
+        
         ReportStructure thisReport = new ReportStructure();
         
         thisReport.setActive(this.selectedReportStructure.isActive());
         thisReport.setReportFilename(this.selectedReportStructure.getReportFilename());
-        thisReport.setReportGroups(this.selectedReportStructure.getReportGroups());
+        thisReport.setReportGroups(rString);
         thisReport.setReportStructureId(this.selectedReportStructure.getReportStructureId());
-        thisReport.setSrMailGroupId(this.selectedReportStructure.getSrMailGroupId());
+        thisReport.setSrMailGroupId(this.selectedSRMailGroup.getSrMailGroupId());
 
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -151,5 +165,23 @@ public class ReportStructureAdminBean implements Serializable {
     public void setFilterList(List<ReportStructure> filterList) {
         this.filterList = filterList;
     }
+
+    public SRMailGroup getSelectedSRMailGroup() {
+        return selectedSRMailGroup;
+    }
+
+    public void setSelectedSRMailGroup(SRMailGroup selectedSRMailGroup) {
+        this.selectedSRMailGroup = selectedSRMailGroup;
+    }
+
+    public List<FileCompareGroup> getSelectedReportGroups() {
+        return selectedReportGroups;
+    }
+
+    public void setSelectedReportGroups(List<FileCompareGroup> selectedReportGroups) {
+        this.selectedReportGroups = selectedReportGroups;
+    }
+    
+    
     
 }

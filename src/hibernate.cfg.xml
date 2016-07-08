@@ -21,5 +21,6 @@
 		<mapping class="com.stellr.sr.domain.ReportSection"/>
 		<mapping class="com.stellr.sr.domain.ReportSectionContent"/>
 		<mapping class="com.stellr.sr.domain.ReportStructure"/>
+                <mapping class="com.stellr.sr.domain.SRMailGroup"/>
 	</session-factory>
 </hibernate-configuration>

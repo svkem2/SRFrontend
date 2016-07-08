@@ -47,31 +47,6 @@ public class FileCompareGroup implements java.io.Serializable {
     public FileCompareGroup() {
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + this.fileCompareId;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final FileCompareGroup other = (FileCompareGroup) obj;
-        if (this.fileCompareId != other.fileCompareId) {
-            return false;
-        }
-        return true;
-    }
-
     public int getFileCompareId() {
         return fileCompareId;
     }
@@ -103,5 +78,32 @@ public class FileCompareGroup implements java.io.Serializable {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.fileCompareId;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FileCompareGroup other = (FileCompareGroup) obj;
+        if (this.fileCompareId != other.fileCompareId) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

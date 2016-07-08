@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">                  
+    <h:form id="srMailGroupModalForm" class="editEntityModal">
+        <p:dialog class="small-11 columns " header="Input File Entry" widgetVar="createEditSRMailGroupModal" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <h5 class="greenFont"><strong>Mail Group Details</strong></h5>
+                </div>
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="sendTo" value="To:" />
+                    <p:inputText id="sendTo" label="To:" value="#{srMailGroupAdminBean.selectedSRMailGroup.srMailSendTo}">
+                    </p:inputText>
+                    <p:message id="sendToMsg" for="sendTo" style="color: red;" />
+                </div>
+                <div class="small-12 medium-6 columns">
+                    <h:outputLabel for="cc" value="CC:" />
+                    <p:inputTextarea id="cc" label="CC" value="#{srMailGroupAdminBean.selectedSRMailGroup.srMailCc}" style="width:100%; min-height: 250px;">
+                    </p:inputTextarea>
+                    <p:message id="ccMsg" for="cc" style="color: red;" />
+                </div>
+            </div>
+            <br/>
+            <div class="row .dataTableHeader">
+                <div class="small-12 columns tableHeaderFacet ">
+                    <div class="button-group tableHeaderFacet float-right">
+                        <p:commandButton value="Save Entry" class="button tableHeaderFacet" ajax="true" actionListener="#{srMailGroupAdminBean.saveEntryAction(actionEvent)}">
+                        </p:commandButton>
+                        <p:commandButton value="Cancel" class="button tableHeaderFacet" ajax="false" onclick="createEditSRMailGroupModal.hide()" immediate="true">
+                        </p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:dialog>
+    </h:form>
+</html>
